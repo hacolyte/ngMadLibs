@@ -1,0 +1,57 @@
+body{
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 40px;
+	font-family: "Helvetica", sans-serif;
+}
+
+header, section{
+	border: 1px solid black;
+	padding: 20px;
+}
+
+header h1{
+	text-align: center;
+  	font-size: 70px;
+  	line-height: 9px;
+}
+
+.smiley-face{
+	background-image: url("../img/mad-lib-happy-face.png");
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+
+.logo-container{
+	float: right;
+	width: 740px;
+}
+
+.angular-logo{
+  	background-image: url("../img/ng-mad-libs-logo.png");
+  	background-repeat: no-repeat;
+  	width: 450px;
+  	height: 105px;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.column{
+	width: 30%;
+  	float: left;
+}
+
+.column input{
+	display: block;
+  	margin: 20px;
+}
+
+section p{
+	line-height: 30px;
+}
+
+.clr{
+	clear: both;
+}
