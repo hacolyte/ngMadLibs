@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>ngMadLibs</title>
     <link rel="stylesheet" href="css/style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
 </head>
-<body>
+<body ng-controller="myCtrl">
 	<header class="center">
 		<div class="smiley-face"></div>
 		<div class="logo-container">
@@ -17,11 +18,16 @@
 	</header>
 	<section>
 		<h2>Provide the following words:</h2>
+		<label>Please select a gender first:</label>
+		<select ng-model="gender">
+			<option value="female">Female</option>
+			<option value="male">Male</option>
+		</select>
 		<form>
 			<div class="column">
-				<input type="text" placeholder="female name" ng-model="femaleName" />
-				<input type="text" placeholder="dirty task" ng-model="dirtyTask" />
-				<input type="text" placeholder="adjective" ng-model="adjective" />
+				<input type="text" placeholder="name" ng-model="name"/>
+				<input type="text" placeholder="dirty task" ng-model="dirtyTask"/>
+				<input type="text" placeholder="adjective" ng-model="adjective"/>
 			</div>
 			<div class="column">
 				<input type="text" placeholder="job title" ng-model="jobTitle" />
@@ -38,9 +44,9 @@
 	</section>
 	<section>
 		<p>
-			{{femaleName}} was a {{jobTitle}} who loved technology. Although she loved parts of her job, she absolutely hated  {{tediousTask}} and {{dirtyTask}}. So, {{femaleName}} met with her life mentor {{celebrity}} who told her to learn how to {{uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{uselessSkill}} so she studied programming instead. 
+			{{name}} was a {{jobTitle}} who loved technology. Although {{'he' | genderFilter: gender}} loved parts of {{'his' | genderFilter: gender}} job, {{'he' | genderFilter: gender}} absolutely hated  {{tediousTask}} and {{dirtyTask}}. So, {{name}} met with {{'his' | genderFilter: gender}} life mentor {{celebrity}} who told {{'him' | genderFilter: gender}} to learn how to {{uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{uselessSkill}} so {{'he'| genderFilter: gender}} studied programming instead. 
  	
-			What a great decision! With her new skills, {{femaleName}} built a(n) {{adjective}} robot named {{obnoxiousCelebrity}} that not only loved {{dirtyTask}} but did it {{hugeNumber}} times faster. 
+			What a great decision! With {{'his' | genderFilter: gender}} new skills, {{name}} built a(n) {{adjective}} robot named {{obnoxiousCelebrity}} that not only loved {{dirtyTask}} but did it {{hugeNumber}} times faster. 
 		</p>
 	</section>
 </body>
