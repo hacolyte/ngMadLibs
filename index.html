@@ -18,7 +18,7 @@
 	</header>
 	<section>
 		<h2>Provide the following words:</h2>
-		<form name="myForm" novalidate ng-submit="submit()" ng-show="!myForm.$submitted || textForm.$submitted">
+		<form name="myForm" novalidate ng-submit="submit()" ng-show="!myForm.$submitted">
 			<div class="column">
 				<div class="gender-select">
 					<label>Please select a gender:</label>
@@ -45,7 +45,7 @@
 			<button type="submit">Generate My Mad Lib</button>
 		</form>
 		<div class="text">
-			<form name="textForm" novalidate ng-submit="submit()" ng-show="!textForm.$submitted || myForm.$submitted">
+			<form name="textForm" novalidate ng-submit="submit()" ng-show="!textForm.$submitted">
 				<p>
 					{{data.name}} was a {{data.jobTitle}} who loved technology. Although {{'he' | genderFilter: data.gender}} loved parts of {{'his' | genderFilter: data.gender}} job, {{'he' | genderFilter: data.gender}} absolutely hated  {{data.tediousTask}} and {{data.dirtyTask}}. So, {{data.name}} met with {{'his' | genderFilter: data.gender}} life mentor {{data.celebrity}} who told {{'him' | genderFilter: data.gender}} to learn how to {{data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{data.uselessSkill}} so {{'he'| genderFilter: data.gender}} studied programming instead. 
 		 	
