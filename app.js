@@ -1,11 +1,14 @@
 var app = angular.module("myApp", []);
 
-app.controller('myCtrl', myController);
+app.controller('formController', formController);
 app.filter('genderFilter', genderFilter)
 
 /////////////////////
-function myController($scope){
-
+function formController($scope){
+	$scope.submit = function(){
+	    console.log($scope.data);
+	    console.log($scope.myForm);
+	};
 }
 
 function genderFilter(){

@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js" type="text/javascript"></script>
     <script src="app.js" type="text/javascript"></script>
 </head>
-<body ng-controller="myCtrl">
+<body ng-controller="formController">
 	<header class="center">
 		<div class="smiley-face"></div>
 		<div class="logo-container">
@@ -18,36 +18,42 @@
 	</header>
 	<section>
 		<h2>Provide the following words:</h2>
-		<label>Please select a gender first:</label>
-		<select ng-model="gender">
-			<option value="female">Female</option>
-			<option value="male">Male</option>
-		</select>
-		<form>
+		<form name="myForm" novalidate ng-submit="submit()" ng-show="!myForm.$submitted || textForm.$submitted">
 			<div class="column">
-				<input type="text" placeholder="name" ng-model="name"/>
-				<input type="text" placeholder="dirty task" ng-model="dirtyTask"/>
-				<input type="text" placeholder="adjective" ng-model="adjective"/>
+				<div class="gender-select">
+					<label>Please select a gender:</label>
+					<select ng-model="data.gender" required>
+						<option value="female">Female</option>
+						<option value="male">Male</option>
+					</select>
+				</div>
+				<input type="text" placeholder="name" ng-model="data.name" required />
+				<input type="text" placeholder="dirty task" ng-model="data.dirtyTask" required />
+				<input type="text" placeholder="adjective" ng-model="data.adjective" required />
 			</div>
 			<div class="column">
-				<input type="text" placeholder="job title" ng-model="jobTitle" />
-				<input type="text" placeholder="celebrity" ng-model="celebrity" />
-				<input type="text" placeholder="obnoxious celebrity" ng-model="obnoxiousCelebrity" />
+				<input type="text" placeholder="job title" ng-model="data.jobTitle" required />
+				<input type="text" placeholder="celebrity" ng-model="data.celebrity" required />
+				<input type="text" placeholder="obnoxious celebrity" ng-model="data.obnoxiousCelebrity" required />
 			</div>
 			<div class="column">
-				<input type="text" placeholder="tedious task" ng-model="tediousTask" />
-				<input type="text" placeholder="useless skill" ng-model="uselessSkill" />
-				<input type="text" placeholder="huge number" ng-model="hugeNumber" />
+				<input type="text" placeholder="tedious task" ng-model="data.tediousTask" required />
+				<input type="text" placeholder="useless skill" ng-model="data.uselessSkill" required />
+				<input type="number" placeholder="huge number" ng-model="data.hugeNumber" required />
 			</div>
 			<div class="clr"></div>
+			<button type="submit">Generate My Mad Lib</button>
 		</form>
-	</section>
-	<section>
-		<p>
-			{{name}} was a {{jobTitle}} who loved technology. Although {{'he' | genderFilter: gender}} loved parts of {{'his' | genderFilter: gender}} job, {{'he' | genderFilter: gender}} absolutely hated  {{tediousTask}} and {{dirtyTask}}. So, {{name}} met with {{'his' | genderFilter: gender}} life mentor {{celebrity}} who told {{'him' | genderFilter: gender}} to learn how to {{uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{uselessSkill}} so {{'he'| genderFilter: gender}} studied programming instead. 
- 	
-			What a great decision! With {{'his' | genderFilter: gender}} new skills, {{name}} built a(n) {{adjective}} robot named {{obnoxiousCelebrity}} that not only loved {{dirtyTask}} but did it {{hugeNumber}} times faster. 
-		</p>
+		<div class="text">
+			<form name="textForm" novalidate ng-submit="submit()" ng-show="!textForm.$submitted || myForm.$submitted">
+				<p>
+					{{data.name}} was a {{data.jobTitle}} who loved technology. Although {{'he' | genderFilter: data.gender}} loved parts of {{'his' | genderFilter: data.gender}} job, {{'he' | genderFilter: data.gender}} absolutely hated  {{data.tediousTask}} and {{data.dirtyTask}}. So, {{data.name}} met with {{'his' | genderFilter: data.gender}} life mentor {{data.celebrity}} who told {{'him' | genderFilter: data.gender}} to learn how to {{data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{data.uselessSkill}} so {{'he'| genderFilter: data.gender}} studied programming instead. 
+		 	
+					What a great decision! With {{'his' | genderFilter: data.gender}} new skills, {{data.name}} built a(n) {{data.adjective}} robot named {{data.obnoxiousCelebrity}} that not only loved {{data.dirtyTask}} but did it {{data.hugeNumber}} times faster. 
+				</p>
+				<button type="submit">Reset</button>
+			</form>
+		</div>
 	</section>
 </body>
 </html>
