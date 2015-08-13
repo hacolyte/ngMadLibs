@@ -6,9 +6,13 @@ app.filter('genderFilter', genderFilter)
 /////////////////////
 function formController($scope){
 	$scope.submit = function(){
-	    console.log($scope.data);
-	    console.log($scope.myForm);
-	};
+        $scope.submitted = true
+	}
+
+    $scope.reset = function() {
+        $scope.submitted = false
+        $scope.data = {}
+    }
 }
 
 function genderFilter(){
