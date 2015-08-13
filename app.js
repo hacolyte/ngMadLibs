@@ -19,7 +19,7 @@ function formController($scope){
 		$scope.data = {};
 		$scope.myForm.$setPristine();
 	}
-	$scope.pattern = /^[\d]/
+	$scope.pattern = /^\d+$/
 }
 
 function genderFilter(){
