@@ -45,7 +45,11 @@ header h1{
 
 .column input{
 	display: block;
-  	margin: 20px;
+	margin: 20px;
+}
+
+.input-container{
+	padding: 20px;
 }
 
 section p{
@@ -54,6 +58,12 @@ section p{
 
 .gender-select{
 	float: left;
+}
+
+.error{
+	color:red;
+	font-size: 12px;
+	margin: 0 0 0 20px;
 }
 
 .clr{

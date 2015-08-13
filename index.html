@@ -8,52 +8,63 @@
     <script src="app.js" type="text/javascript"></script>
 </head>
 <body ng-controller="formController">
-	<header class="center">
+	    <header class="center">
 		<div class="smiley-face"></div>
-		<div class="logo-container">
-			<div class="angular-logo"></div>
-			<h1>Automate This!</h1>
-		</div>
-		<div class="clr"></div>
-	</header>
-	<section>
-		<h2>Provide the following words:</h2>
-		<form name="myForm" novalidate ng-submit="submit()" ng-show="!myForm.$submitted">
-			<div class="column">
-				<div class="gender-select">
-					<label>Please select a gender:</label>
-					<select ng-model="data.gender" required>
-						<option value="female">Female</option>
-						<option value="male">Male</option>
-					</select>
-				</div>
-				<input type="text" placeholder="name" ng-model="data.name" required />
-				<input type="text" placeholder="dirty task" ng-model="data.dirtyTask" required />
-				<input type="text" placeholder="adjective" ng-model="data.adjective" required />
-			</div>
-			<div class="column">
-				<input type="text" placeholder="job title" ng-model="data.jobTitle" required />
-				<input type="text" placeholder="celebrity" ng-model="data.celebrity" required />
-				<input type="text" placeholder="obnoxious celebrity" ng-model="data.obnoxiousCelebrity" required />
-			</div>
-			<div class="column">
-				<input type="text" placeholder="tedious task" ng-model="data.tediousTask" required />
-				<input type="text" placeholder="useless skill" ng-model="data.uselessSkill" required />
-				<input type="number" placeholder="huge number" ng-model="data.hugeNumber" required />
-			</div>
-			<div class="clr"></div>
-			<button type="submit">Generate My Mad Lib</button>
-		</form>
-		<div class="text">
-			<form name="textForm" novalidate ng-submit="submit()" ng-show="!textForm.$submitted">
-				<p>
-					{{data.name}} was a {{data.jobTitle}} who loved technology. Although {{'he' | genderFilter: data.gender}} loved parts of {{'his' | genderFilter: data.gender}} job, {{'he' | genderFilter: data.gender}} absolutely hated  {{data.tediousTask}} and {{data.dirtyTask}}. So, {{data.name}} met with {{'his' | genderFilter: data.gender}} life mentor {{data.celebrity}} who told {{'him' | genderFilter: data.gender}} to learn how to {{data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{data.uselessSkill}} so {{'he'| genderFilter: data.gender}} studied programming instead. 
-		 	
-					What a great decision! With {{'his' | genderFilter: data.gender}} new skills, {{data.name}} built a(n) {{data.adjective}} robot named {{data.obnoxiousCelebrity}} that not only loved {{data.dirtyTask}} but did it {{data.hugeNumber}} times faster. 
-				</p>
-				<button type="submit">Reset</button>
-			</form>
-		</div>
-	</section>
+        <div class="logo-container">
+            <div class="angular-logo"></div>
+            <h1>Automate This!</h1>
+        </div>
+        <div class="clr"></div>
+    </header>
+    <section>
+        <form name="myForm" novalidate ng-show="!submitted">
+            <h2>Provide the following words:</h2>
+            <div class="column">
+                <div class="gender-select">
+                    <label>Please select a gender:</label>
+                    <select name="gender" ng-model="data.gender" required>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                    <span class="error" ng-if="myForm.$submitted && myForm.gender.$error.required">Please select a gender</span>
+                </div>
+                <input type="text" name="name" placeholder="name" ng-model="data.name" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.name.$error.required">Field Required</span>
+                <input type="text" name="dirtTask" placeholder="dirty task" ng-model="data.dirtyTask" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.dirtTask.$error.required">Field Required</span>
+                <input type="text" name="adjective" placeholder="adjective" ng-model="data.adjective" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.adjective.$error.required">Field Required</span>
+            </div>
+            <div class="column">
+                <input type="text" name="jobTitle" placeholder="job title" ng-model="data.jobTitle" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.jobTitle.$error.required">Field Required</span>
+                <input type="text" name="celebrity" placeholder="celebrity" ng-model="data.celebrity" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.celebrity.$error.required">Field Required</span>
+                <input type="text" name="obnoxious" placeholder="obnoxious celebrity" ng-model="data.obnoxiousCelebrity" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.obnoxious.$error.required">Field Required</span>
+            </div>
+            <div class="column">
+                <input type="text" name="tedious" placeholder="tedious task" ng-model="data.tediousTask" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.tedious.$error.required">Field Required</span>
+                <input type="text" name="useless" placeholder="useless skill" ng-model="data.uselessSkill" required />
+                <span class="error" ng-if="myForm.$submitted && myForm.useless.$error.required">Field Required</span>
+                <input type="number" name="number" placeholder="huge number" ng-model="data.hugeNumber" required ng-pattern="pattern" />
+                <span class="error" ng-if="myForm.$submitted && myForm.number.$error.required">Field Required</span>
+                <span class="error" ng-if="myForm.$submitted && myForm.number.$error.pattern">Huge Number Required</span>
+            </div>
+            <div class="clr"></div>
+            <button type="submit" ng-click="submit()">Generate My Mad Lib</button>
+        </form>
+        <div class="text">
+            <form name="textForm" novalidate ng-show="submitted">
+                <p>
+                    {{data.name}} was a {{data.jobTitle}} who loved technology. Although {{'he' | genderFilter: data.gender}} loved parts of {{'his' | genderFilter: data.gender}} job, {{'he' | genderFilter: data.gender}} absolutely hated  {{data.tediousTask}} and {{data.dirtyTask}}. So, {{data.name}} met with {{'his' | genderFilter: data.gender}} life mentor {{data.celebrity}} who told {{'him' | genderFilter: data.gender}} to learn how to {{data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{data.uselessSkill}} so {{'he'| genderFilter: data.gender}} studied programming instead. 
+            
+                    What a great decision! With {{'his' | genderFilter: data.gender}} new skills, {{data.name}} built a(n) {{data.adjective}} robot named {{data.obnoxiousCelebrity}} that not only loved {{data.dirtyTask}} but did it {{data.hugeNumber}} times faster. 
+                </p>
+                <button type="submit" ng-click="reset()">Reset</button>
+            </form>
+        </div>
+    </section>
 </body>
 </html>

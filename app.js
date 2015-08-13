@@ -6,9 +6,20 @@ app.filter('genderFilter', genderFilter)
 /////////////////////
 function formController($scope){
 	$scope.submit = function(){
-	    console.log($scope.data);
-	    console.log($scope.myForm);
-	};
+		if($scope.myForm.$valid){
+			console.log("the form is valid")
+			$scope.submitted = true;
+		}else{
+			console.log("the form is invalid")
+			$scope.submitted = false;
+		}	    
+	}
+	$scope.reset = function(){
+		$scope.submitted = false;
+		$scope.data = {};
+		$scope.myForm.$setPristine();
+	}
+	$scope.pattern = /^[\d]/
 }
 
 function genderFilter(){
