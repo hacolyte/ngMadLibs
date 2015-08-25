@@ -1,4 +1,4 @@
-var app = angular.module("myApp", []);
+var app = angular.module("myApp", ["ngAnimate"]);
 
 app.controller('formController', formController);
 app.filter('genderFilter', genderFilter)

@@ -2,7 +2,6 @@ body{
 	width: 1000px;
 	margin: 0 auto;
 	margin-top: 40px;
-	font-family: "Helvetica", sans-serif;
 }
 
 header, section{
@@ -38,14 +37,13 @@ header h1{
   	margin-right: auto;
 }
 
-.column{
-	width: 30%;
-  	float: left;
+.btn.btn-primary{
+	margin: 20px 0 0 0;
 }
 
-.column input{
+input{
 	display: block;
-	margin: 20px;
+	margin: 20px 0 0 0;
 }
 
 .input-container{
@@ -62,10 +60,74 @@ section p{
 
 .error{
 	color:red;
-	font-size: 12px;
-	margin: 0 0 0 20px;
 }
 
 .clr{
 	clear: both;
 }
+
+.row.hide-transition{
+	height: 35em;
+	overflow: hidden;
+}
+
+.input-form.ng-hide-remove,
+.input-form.ng-hide-add.ng-hide-add-active{
+	-webkit-animation: formSlideUp 1s 1;
+}
+
+.input-form.ng-hide-add,
+.input-form.ng-hide-remove.ng-hide-remove-active{
+	-webkit-animation: formSlideDown 1s 1;
+}
+
+.paragraph.ng-hide-remove,
+.paragraph.ng-hide-add.ng-hide-add-active{
+	-webkit-animation: textSlideDown 1s 1;
+}
+
+.paragraph.ng-hide-add,
+.paragraph.ng-hide-remove.ng-hide-remove-active{
+	-webkit-animation: textSlideUp 1s 1;
+}
+
+@-webkit-keyframes formSlideUp{
+	from {
+		margin: 0; opacity: 1;
+	}
+	to{
+		margin: -4em 0 0 0; opacity: 0;
+	}
+}
+
+@-webkit-keyframes formSlideDown{
+	from {
+		margin: -4em 0 0 0; opacity: 0;
+	}
+	to{
+		margin: 0; opacity: 1;
+	}
+}
+
+@-webkit-keyframes textSlideUp{
+	from{
+		margin: 0 0 -24em 0; opacity: 0;
+	}
+	to{
+		margin: 0; opacity: 1;
+	}
+}
+
+@-webkit-keyframes textSlideDown{
+	from{
+		margin: 0; opacity: 1;
+	}
+	to{
+		margin: 0 0 -24em 0; opacity: 0;
+	}
+}
+
+
+
+
+
